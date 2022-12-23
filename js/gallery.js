@@ -46,25 +46,21 @@ var mCurrentIndex = 0;
 var mRequest = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("slideshow").innerHTML =
-      this.responseText;
+	mJson = xhr.responseText = 'const obj = JSON.parse('{"location":"australia", "austria", "france", "greece", "hungary", "india", "italy", "japan", "korea", "norway", "switzerland", "thailand", "turkey"}');';  //get the response text and parse it as a JSON object
     }
   };
-  xhttp.open("GET", "ajax_info.txt");
+  xhttp.open("GET", mUrl, true);
   xhttp.send();
-req.open("GET", images.json);
 
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
 // Holds the retrived JSON information
 var mJson;
-const mJson = JSON.stringify(
-	String str = g.toJson(images.json);  
-)
+
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'insert_url_here_to_image_json';
+var mUrl = 'images.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
