@@ -43,7 +43,15 @@ function swapPhoto() {
 var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
-var mRequest = new XMLHttpRequest()
+var mRequest = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("slideshow").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
 req.open("GET", images.json);
 
 // Array holding GalleryImage objects (see below).
