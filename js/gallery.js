@@ -31,13 +31,12 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-function swapPhoto() {
-	//Add code here to access the #slideShow element.
-	//Access the img element and replace its source
-	//with a new image from your images array which is loaded 
-	//from the JSON string
+function swapPhoto() 
+{
+	document.getElementById('photo').src = mImages[0].img;
 	console.log('swap photo');
 }
+
 
 // Counter for the mImages array
 var mCurrentIndex = 0;
@@ -46,17 +45,20 @@ var mCurrentIndex = 0;
 var mRequest = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-	mJson = xhr.responseText = 'const obj = JSON.parse('{"location":"australia", "austria", "france", "greece", "hungary", "india", "italy", "japan", "korea", "norway", "switzerland", "thailand", "turkey"}');';  //get the response text and parse it as a JSON object
-    }
+		mJson = JSON.parse(mRequest.responseText);
+		iterateJSON(mJson);
+	}
   };
   xhttp.open("GET", mUrl, true);
   xhttp.send();
 
 // Array holding GalleryImage objects (see below).
-var mImages = [];
+var mRequest = new XMLHttpRequest();
 
 // Holds the retrived JSON information
 var mJson;
+
+var mURl = "images.json"
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
@@ -91,4 +93,15 @@ function GalleryImage() {
 	this.descritption = "";
 	this.date=  "";
 	this.img= " ";//(bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+}
+
+function iterateJSON(mJson)
+{
+for( x= 0; x < mJson.images.length; x++)
+{
+	mImages[x]= new GalleryImage();
+	mImages[x].location = mjson.images[x].imgLocation;
+	mImages[x].description = mJson.images[x].imgLocation;
+	mImages[x].img = mJson.images[x].imgPath;
+}
 }
