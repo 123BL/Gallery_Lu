@@ -33,24 +33,24 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 function swapPhoto() 
 {
-	document.getElementById('photo').src = mImages[0].img;
+	document.getElementById('photo').src = mImages[0];
 	console.log('swap photo');
 }
 
-
+var mImages = [];
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
+mRequest.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 		mJson = JSON.parse(mRequest.responseText);
 		iterateJSON(mJson);
 	}
   };
-  xhttp.open("GET", mUrl, true);
-  xhttp.send();
+  mRequest.open("GET", mUrl, true);
+  mRequest.send();
 
 // Array holding GalleryImage objects (see below).
 var mRequest = new XMLHttpRequest();
