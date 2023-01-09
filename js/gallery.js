@@ -33,36 +33,36 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 function swapPhoto() 
 {
-	document.getElementById('photo').src = mImages[0];
+	document.getElementById('photo').src = mImages[mCurrentIndex].img;
 	console.log('swap photo');
+	mLastFrameTime = 0;
+	mCurrentIndex += 1;
 }
 
-var mImages = [];
+
 // Counter for the mImages array
 var mCurrentIndex = 0;
+
+// Array holding GalleryImage objects (see below).
+var mImages = [];
+// Holds the retrived JSON information
+var mJson;
+
+// URL for the JSON to load by default
+// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
+var mUrl = 'images.json';
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 mRequest.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 		mJson = JSON.parse(mRequest.responseText);
+		console.log("before iteration");
 		iterateJSON(mJson);
 	}
   };
   mRequest.open("GET", mUrl, true);
   mRequest.send();
-
-// Array holding GalleryImage objects (see below).
-var mRequest = new XMLHttpRequest();
-
-// Holds the retrived JSON information
-var mJson;
-
-var mURl = "images.json"
-
-// URL for the JSON to load by default
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -89,19 +89,23 @@ window.addEventListener('load', function() {
 
 function GalleryImage() {
 	//implement me as an object to hold the following data about an image:
-	this.location ="";
-	this.descritption = "";
-	this.date=  "";
-	this.img= " ";//(bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+	var location;
+	var description;
+	var date;
+	var img;
 }
 
 function iterateJSON(mJson)
 {
+	console.log("in iteration");
 for( x= 0; x < mJson.images.length; x++)
 {
 	mImages[x]= new GalleryImage();
-	mImages[x].location = mjson.images[x].imgLocation;
-	mImages[x].description = mJson.images[x].imgLocation;
+	mImages[x].location = mJson.images[x].imgLocation;
+	mImages[x].description = mJson.images[x].description;
 	mImages[x].img = mJson.images[x].imgPath;
+	mImages[x].date = mJson.images[x].date;
+	console.log("img path: " + mJson.images[x].imgPath);
+	console.log("img path: " + mImages[x].img);
 }
 }
