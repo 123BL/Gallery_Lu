@@ -89,17 +89,56 @@ text-decoration: none;
 /*Add CSS styles to rotate the element 90deg
 Make it animate nicely. You'll need CSS3 for this*/
 .rot90 {
-transform: rotate(90deg);
+	position: relative;
+	display: inline-block;
+	border: 1px dashed #000;
+	padding: 10px;
+	background: #ffffa2;
+	height: 20px;
+	opacity: 0.3;
+	text-decoration: none;
+	transition: all 1s ease;
+}
+
+.rot90:hover {
+	transform: scale(2) rotate(30deg) translate(50px);
+	opacity: 1;
 }
 
 /*Add CSS styles to rotate the element 180deg
 Make it animate nicely. You'll need CSS3 for this*/
 .rot180 {
-	transform: rotate(180deg);
+	position: relative;
+	display: inline-block;
+	border: 1px dashed #000;
+	padding: 10px;
+	background: #ffffa2;
+	height: 20px;
+	opacity: 0.3;
+	text-decoration: none;
+	transition: all 1s ease;
+}
+
+.rot180:hover {
+	transform: scale(2) rotate(30deg) translate(50px);
+	opacity: 1;
 }
 
 /*Add CSS styles to rotate the element 270deg
-Make it animate nicely. You'll need CSS3 for this*/
-.rot270 {
-	transform: rotate(270deg);
+Make it animates nicely. You'll need CSS3 for this*/
+.rot180 {
+	position: relative;
+	display: inline-block;
+	border: 1px dashed #000;
+	padding: 10px;
+	background: #ffffa2;
+	height: 20px;
+	opacity: 0.3;
+	text-decoration: none;
+	transition: all 1s ease;
+}
+
+.rot180:hover {
+	transform: scale(2) rotate(30deg) translate(50px);
+	opacity: 1;
 }
