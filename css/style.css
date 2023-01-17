@@ -97,6 +97,7 @@ Make it animate nicely. You'll need CSS3 for this*/
 	text-decoration: none;
 	transition: all 1s ease;
 	rotate: 90deg;
+
 }
 
 
@@ -128,6 +129,7 @@ Make it animates nicely. You'll need CSS3 for this*/
 	opacity: 0.3;
 	text-decoration: none;
 	transition: all 1s ease;
+	float: right;
 }
 
 .rot270:hover {
